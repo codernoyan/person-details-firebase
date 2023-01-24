@@ -8,9 +8,9 @@ export default function UserDetails() {
   return (
     <div>
       <div>
-        <h2 className="text-2xl font-bold text-center">{data?.name.startsWith('Male') ? 'Male' : 'Female'}</h2>
+        <h2 className="text-2xl font-bold text-center my-1">{data?.name.startsWith('Male') ? 'Male' : 'Female'}</h2>
       </div>
-      <div className="flex justify-between items-start p-2 mt-8">
+      <div className="flex justify-between items-start p-2 mt-4">
         <div>
           <div className="mb-4">
             <h2 className="text-2xl font-bold">{data?.userId}</h2>
@@ -59,7 +59,7 @@ export default function UserDetails() {
           <img
             src={data?.image}
             alt="person"
-            className="w-[400px] h-[600px] object-cover"
+            className="w-[400px] h-[520px] object-cover"
           />
         </div>
       </div>

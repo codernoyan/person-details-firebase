@@ -22,9 +22,7 @@ const router = createBrowserRouter([
         path: '/user-details/:id',
         loader: ({ params }) => loadUserData(params?.id),
         element: (
-          <React.Suspense
-            fallback={<Spinner />}
-          >
+          <React.Suspense fallback={<Spinner />}>
             <LazyUserDetails />
           </React.Suspense>
         ),

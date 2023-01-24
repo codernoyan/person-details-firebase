@@ -1,36 +1,19 @@
 /* eslint-disable linebreak-style */
-import { collection, getDoc, getDocs } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
-import db from '../firebase/firebase.config';
+/* eslint-disable react/react-in-jsx-scope */
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserProvider } from '../contexts/UserContext/UserContext';
 import UserCard from './UserCard';
 
 function RightSideBar() {
-  const [users, setUsers] = useState([]);
-  console.log(users);
-
-  useEffect(() => {
-    const usersCollection = collection(db, 'users');
-    getDocs(usersCollection)
-      .then((res) => {
-        const userDetails = res.docs.map((user) => ({
-          data: user?.data(),
-          id: user?.id,
-        }));
-        // console.log(userDetails);
-        setUsers(userDetails);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+  const navigate = useNavigate();
+  const {
+    users,
+  } = useContext(UserProvider);
 
   const handleGetSingleData = (id) => {
     console.log(id);
-    const userDoc = collection(db, 'users', id);
-    getDoc(userDoc)
-      .then((doc) => {
-        console.log(doc);
-      });
+    navigate(`/user-details/${id}`);
   };
 
   return (
@@ -60,7 +43,11 @@ function RightSideBar() {
         {/* user details cards here */}
         <div>
           {users?.map((user) => (
-            <UserCard key={user?.id} user={user} handleGetSingleData={handleGetSingleData} />
+            <UserCard
+              key={user?.id}
+              user={user}
+              handleGetSingleData={handleGetSingleData}
+            />
           ))}
         </div>
       </div>

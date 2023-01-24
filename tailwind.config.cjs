@@ -12,6 +12,7 @@ module.exports = {
         box2Color: '#FF0000',
         rightSideColor: '#D9D9D9',
         leftSideColor: '#00B8F1',
+        cardColor: '#D9D9D9',
       },
     },
   },
